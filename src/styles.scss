@@ -1,1 +1,62 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+*, .mat-tooltip {
+  direction: rtl !important;
+  font-family: "Rubik", serif !important;
+  font-optical-sizing: auto !important;
+  font-style: normal !important;
+}
+
+.cdk-overlay-container .mat-mdc-tooltip {
+  --mdc-plain-tooltip-container-color: #01182d;
+  --mdc-plain-tooltip-supporting-text-color: white;
+  --mdc-plain-tooltip-container-shape: 4px;
+  --mdc-plain-tooltip-supporting-text-line-height: 16px;
+  --mdc-plain-tooltip-supporting-text-size: 12px;
+  --mdc-plain-tooltip-supporting-text-weight: 400;
+  --mdc-tooltip-word-break: normal;
+}
+
+mat-label {
+  font-size: 12px;
+}
+
+mat-error {
+  text-align: start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+mat-form-field {
+  .mat-mdc-text-field-wrapper {
+    background: #ebebebba !important;
+    .mat-mdc-form-field-flex {
+      .mat-mdc-form-field-infix {
+        .mat-mdc-input-element {
+          color: #1e293b  !important;
+          font-size: 14px;
+        }
+        .mat-mdc-input-element::placeholder {
+          color: #44474e  !important;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+::-webkit-scrollbar{
+  //background-color: #0000;
+  height: 0px;
+  width: 0px;
+}

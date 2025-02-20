@@ -1,0 +1,88 @@
+{
+  "id": "tiGsahkiyWzgKZDwyfGOA2N",
+  "form": {
+    "name": "signup",
+    "title": "ساخت حساب کاربری",
+    "submitLabel": "ثبت نام",
+    "nestedFormShowType": "MAIN_FORM",
+    "fieldDescriptionShowType": "توضیحات ساخت حساب کاربری",
+    "fields": [
+      {
+        "@type": ".input.TextField",
+        "name": "identifier",
+        "title": "شماره موبایل یا ایمیل",
+        "description": "شماره موبایل یا ایمیل خود را وارد کنید",
+        "errorMessage": "شناسه وارد شده صحیح نیست",
+        "required": true,
+        "minLength": 3,
+        "maxLength": 40,
+        "type": "TEXT"
+      },
+      {
+        "@type": ".input.TextField",
+        "name": "username",
+        "title": "نام کاربری",
+        "description": "نام کاربری باید شامل حروف کوچک انگلیسی و حداقل 5 کاراکتر و حداکثر 15 کاراکتر باشد",
+        "descriptionShowType": "TOOLTIP",
+        "errorMessage": "نام کاربری باید شامل حروف کوچک انگلیسی و حداقل 5 کاراکتر و حداکثر 15 کاراکتر باشد",
+        "required": true,
+        "regex": "^[a-z][a-z0-9]{4,}$",
+        "minLength": 5,
+        "maxLength": 15,
+        "type": "TEXT"
+      },
+      {
+        "@type": ".input.TextField",
+        "name": "first_name",
+        "title": "نام",
+        "description": "نام را وارد کنید",
+        "errorMessage": "نام وارد شده باید فارسی باشد و طول آن حداقل 2 و حداکثر 30 حرف باشد.",
+        "required": true,
+        "regex": "^[\\u0600-\\u06FF]{2,30}$",
+        "minLength": 2,
+        "maxLength": 30,
+        "type": "TEXT"
+      },
+      {
+        "@type": ".input.TextField",
+        "name": "last_name",
+        "title": "نام خانوادگی",
+        "description": "نام خانوادگی را وارد کنید",
+        "errorMessage": "نام خانوادگی وارد شده باید فارسی باشد و طول آن حداقل 2 و حداکثر 30 حرف باشد.",
+        "required": true,
+        "regex": "^[\\u0600-\\u06FF]{2,30}$",
+        "minLength": 2,
+        "maxLength": 30,
+        "type": "TEXT"
+      },
+      {
+        "@type": ".input.TextField",
+        "name": "display_name",
+        "title": "نام نمایشی",
+        "errorMessage": "نام نمایشی وارد شده باید حداقل 2 و حداکثر 50 حرف باشد",
+        "required": true,
+        "minLength": 2,
+        "maxLength": 50,
+        "type": "TEXT"
+      },
+      {
+        "@type": ".input.NewPasswordField",
+        "name": "newPassword",
+        "title": "رمز عبور",
+        "info": "رمز عبور باید ترکیبی از حروف کوچک، حروف بزرگ و اعدد انگلیسی و حروف خاص نظیر ( &،$،#،@،^،%و...) و حداقل 8 و حداکثر 20 حرف باشد",
+        "errorMessage": "رمز عبور وارد شده قابل قبول نیست.",
+        "required": true,
+        "regex": "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[&$#@^%]).{8,20}$",
+        "minLength": 8,
+        "maxLength": 20,
+        "showConfirmPassword": true,
+        "type": "NEW_PASSWORD"
+      }
+    ],
+    "forms": []
+  },
+  "steps": 5,
+  "current": 0,
+  "fieldErrors": {},
+  "errors": []
+}

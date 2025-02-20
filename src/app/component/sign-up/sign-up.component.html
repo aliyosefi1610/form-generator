@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="form">
+    @if (isLoading) {
+      <mat-spinner diameter="40"/>
+    } @else {
+      <app-dynamic-form [formData]="formData.form"/>
+    }
+  </div>
+</div>

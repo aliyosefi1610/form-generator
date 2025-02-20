@@ -1,0 +1,88 @@
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <h2 class="title" [matTooltip]="formData.fieldDescriptionShowType">{{ formData.title }}</h2>
+
+  @for (field of formData.fields; track $index) {
+
+    @if (field.type === fieldTypeEnum.text) {
+      <mat-form-field dir="rtl" [matTooltipPosition]="'left'" [matTooltip]="field.description">
+        <mat-label>{{ field.title }}</mat-label>
+
+        <input [formControlName]="field.name"
+               [type]="field.type.toLowerCase()"
+               [placeholder]="field.description"
+               autocomplete="off"
+               matInput>
+
+        @if (isFieldInvalid(field)) {
+          <mat-error [matTooltip]="field.errorMessage">
+            {{ field.errorMessage }}
+          </mat-error>
+        }
+      </mat-form-field>
+    } @else if (field.type === fieldTypeEnum.newPassword) {
+      <!-- برای فیلدهای رمز عبور جدید -->
+      <div class="password">
+        <mat-form-field dir="rtl" [matTooltipPosition]="'left'" [matTooltip]="field.description">
+          <mat-label>{{ field.title }}</mat-label>
+
+          <input [formControlName]="field.name"
+                 [type]="showHidePassword() ? 'password' : 'text'"
+                 [placeholder]="field.info"
+                 autocomplete="off"
+                 matInput>
+
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="clickEvent($event)"
+            [attr.aria-pressed]="showHidePassword()"
+          >
+            <img [src]="showHidePassword() ? 'icon/visibility-on.svg' : 'icon/visibility.svg'"
+                 alt="custom icon">
+          </button>
+
+          @if (isFieldInvalid(field)) {
+            <mat-error [matTooltip]="field.errorMessage">
+              {{ field.errorMessage }}
+            </mat-error>
+          }
+        </mat-form-field>
+        <img [matTooltip]="field.info" src="icon/info.svg" alt="custom icon">
+      </div>
+    }
+
+
+    @if (field.showConfirmPassword) {
+      <!-- نمایش فیلد تایید رمز عبور -->
+      <mat-form-field dir="rtl" [matTooltipPosition]="'left'" [matTooltip]="field.description">
+        <mat-label>{{ field.title }}</mat-label>
+        <input [formControlName]="fieldNameEnum.confirmPassword"
+               [type]="showHidePassword() ? 'password' : 'text'"
+               autocomplete="off"
+               placeholder="تکرار رمز عبود"
+               matInput
+               required>
+
+        @if (form.get(field.name)?.hasError('required')) {
+          <mat-error>
+            این فیلد اجباری است
+          </mat-error>
+        }
+
+        @if (form.get(field.name)?.hasError(fieldNameEnum.confirmPassword)) {
+          <mat-error>
+            تکرار رمز عبور با رمز عبور یکسان نیست
+          </mat-error>
+        }
+      </mat-form-field>
+    }
+
+  }
+
+  <button class="submit" mat-flat-button
+          type="submit" [disabled]="!form.valid">
+    {{ formData.submitLabel }}
+  </button>
+
+</form>
